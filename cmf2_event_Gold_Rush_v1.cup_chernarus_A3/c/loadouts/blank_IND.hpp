@@ -5,43 +5,42 @@
 // ------------------- PASTE BELOW THIS LINE
 
 // Camo set
-#define CAMO_UNIFORM "SE_SEVA_Suit_Bandits"
-#define CAMO_VEST "SE_Tactical_Vest_Green"
-#define CAMO_BACKPACK "SE_Explorer_Backpack"
+#define CAMO_UNIFORM "SE_SEVA_Suit_Monolith"
+#define CAMO_VEST "SE_Assault_Vest_Black"
+#define CAMO_BACKPACK "SE_Hiking_Backpack"
 #define CAMO_HEADGEAR "PLOT_ARMOR_H_No_Hat"
 // Rifle
-#define RIFLE "CUP_arifle_Sa58P"
-#define RIFLE_MAG "CUP_30Rnd_Sa58_M:10"
+#define RIFLE "CUP_arifle_AS_VAL_flash"
+#define RIFLE_MAG "CUP_20Rnd_9x39_SP5_VSS_M:15"
 #define RIFLE_ATTACHMENTS ""
 #define AR_ATTACHMENTS RIFLE_ATTACHMENTS, ""
 #define ALT_OPTICS "optic_Aco",STANAG_OPTICS,WARSAW_OPTICS
 // GL Rifle
-#define GLRIFLE "CUP_glaunch_M79"
-#define GLRIFLE_MAG ""
-// WARNING - Unknown GL Muzzle [CUP_glaunch_M79->no2ndMuzzle]
-#define GLRIFLE_MAG_FLARE "CUP_1Rnd_StarFlare_White_M203:4"
-#define GLRIFLE_MAG_SMOKE "CUP_1Rnd_Smoke_M203:6","CUP_1Rnd_SmokeRed_M203:4"
-#define GLRIFLE_MAG_HE "CUP_1Rnd_HE_M203:2"
+#define GLRIFLE "CUP_arifle_AKS74_GL"
+#define GLRIFLE_MAG "CUP_30Rnd_545x39_AK_M:10"
+#define GLRIFLE_MAG_FLARE "UGL_FlareYellow_F:4"
+#define GLRIFLE_MAG_SMOKE "1Rnd_Smoke_Grenade_shell:6","1Rnd_SmokeRed_Grenade_shell:4","1Rnd_SmokePurple_Grenade_shell:4",GLRIFLE_MAG_FLARE
+#define GLRIFLE_MAG_HE "1Rnd_HE_Grenade_shell:4"
 // Carbine
-#define CARBINE "CUP_smg_UZI"
-#define CARBINE_MAG "CUP_32Rnd_9x19_UZI_M:10"
+#define CARBINE "CUP_smg_vityaz"
+#define CARBINE_MAG "CUP_30Rnd_9x19AP_Vityaz:10"
 // AR
-#define AR "CUP_SKS"
-#define AR_MAG "CUP_10Rnd_762x39_SKS_M:30"
+#define AR "CUP_sgun_Saiga12K"
+#define AR_MAG "CUP_12Rnd_B_Saiga12_Slug:25"
 // AT
-#define AT "CUP_launch_RPG18"
-#define AT_MAG ""
+#define AT "CUP_launch_RPG7V"
+#define AT_MAG "CUP_PG7V_M:1"
 // MMG
-#define MMG "CUP_smg_UZI"
-#define MMG_MAG "CUP_32Rnd_9x19_UZI_M:16"
+#define MMG "CUP_smg_bizon"
+#define MMG_MAG "CUP_64Rnd_9x19_Bizon_M:8"
 #define MMG_ATT ""
 // MAT
-#define MAT "CUP_launch_RPG18"
-#define MAT_MAG ""
-#define MAT_MAG2 ""
+#define MAT "CUP_launch_RPG7V"
+#define MAT_MAG "CUP_PG7V_M:1"
+#define MAT_MAG2 "CUP_PG7V_M:1"
 #define MAT_OPTIC ""
 // Facewear
-#define GOG "SE_PPM88_Gas_Mask"
+#define GOG "SE_PBF_Gas_Mask"
 
 // -------------------- PASTE ABOVE THIS LINE
 //HMG
@@ -70,8 +69,8 @@
 #define SMG CARBINE
 #define SMG_MAG CARBINE_MAG
 // Pistol
-#define PISTOL "CUP_hgun_SA61"
-#define PISTOL_MAG "CUP_20Rnd_B_765x17_Ball_M:10"
+#define PISTOL "CUP_hgun_PMM"
+#define PISTOL_MAG "CUP_12Rnd_9x18_PMM_M:3"
 // Grenades
 #define LEADER_GRENADES BASE_FRAG,LEADER_SMOKES,SIDE_CHEM_LIGHT
 // Gear
@@ -80,7 +79,7 @@
 #define LINKED BASE_LINKED
 #define LEADER_LINKED BASE_LEADER_LINKED
 #define CARRYALL "B_Carryall_mcamo"
-#define GOG "SE_PPM88_Gas_Mask"
+#define GOG "SE_PBF_Gas_Mask"
 
 // Specialized Resupply Vehicle Loadouts
 // Ammo Truck
@@ -136,7 +135,7 @@ class rifleman {// rifleman
   weapons[] = {RIFLE};
   magazines[] = {RIFLE_MAG,BASE_GRENADES};
   items[] = {TOOLS,RADIO_SR};
-  linkedItems[] = {LINKED,"armst_item_pda_band"};
+  linkedItems[] = {LINKED,"armst_item_pda_monolith"};
   attachments[] = {RIFLE_ATTACHMENTS};
   opticChoices[] = {};
   goggles[] = {GOG};
@@ -150,12 +149,14 @@ class Fic_Soldier_Carbine: rifleman {// carbine-man
 
 //Leadership
 class ftl: rifleman {// FTL
-  weapons[] = {RIFLE};
-  magazines[] = {RIFLE_MAG,LEADER_GRENADES};
+  weapons[] = {GLRIFLE};
+  magazines[] = {GLRIFLE_MAG,GLRIFLE_MAG_HE,GLRIFLE_MAG_SMOKE,LEADER_GRENADES};
   items[] += {LEADER_TOOLS,RADIO_MR};
   linkedItems[] += {LEADER_LINKED,BINOS};
 };
 class sl: ftl {// SL
+  handguns[] = {PISTOL};
+  magazines[] += {PISTOL_MAG};
   linkedItems[] = {LINKED,LEADER_LINKED,RANGE_FINDER};
   items[] += {RADIO_LR};
 };
@@ -192,7 +193,8 @@ class cm: plm {// Company Medic
 //Infantry
 class ar: rifleman {// AR
   weapons[] = {AR};
-  magazines[] = {AR_MAG,BASE_GRENADES};
+  magazines[] = {AR_MAG,PISTOL_MAG,BASE_GRENADES};
+  handguns[] = {PISTOL};
 };
 class aar: rifleman {// AAR
   linkedItems[] += {BINOS};
@@ -203,8 +205,7 @@ class lat: Fic_Soldier_Carbine {// RAT
 };
 class rifleman_02: rifleman {// Grenadier
   weapons[] = {GLRIFLE};
-  handguns[] = {PISTOL};
-  magazines[] = {GLRIFLE_MAG,GLRIFLE_MAG_HE,GLRIFLE_MAG_HE,GLRIFLE_MAG_SMOKE,BASE_GRENADES,PISTOL_MAG};
+  magazines[] = {GLRIFLE_MAG,GLRIFLE_MAG_HE,GLRIFLE_MAG_HE,GLRIFLE_MAG_SMOKE,BASE_GRENADES};
 };
 
 

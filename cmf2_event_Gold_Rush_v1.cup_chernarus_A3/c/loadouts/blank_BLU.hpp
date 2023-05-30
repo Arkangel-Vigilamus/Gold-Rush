@@ -4,7 +4,43 @@
 
 // ------------------- PASTE BELOW THIS LINE
 
-
+// Camo set
+#define CAMO_UNIFORM "SE_SEVA_Suit_Clear_Sky"
+#define CAMO_VEST "SE_Sunrise_Vest"
+#define CAMO_BACKPACK "SE_Hunting_Backpack"
+#define CAMO_HEADGEAR "PLOT_ARMOR_H_No_Hat"
+// Rifle
+#define RIFLE "CUP_arifle_Galil_556_black"
+#define RIFLE_MAG "CUP_35Rnd_556x45_Galil_Mag:9"
+#define RIFLE_ATTACHMENTS ""
+#define AR_ATTACHMENTS RIFLE_ATTACHMENTS, ""
+#define ALT_OPTICS "optic_Aco",STANAG_OPTICS,WARSAW_OPTICS
+// GL Rifle
+#define GLRIFLE "CUP_arifle_L85A2_GL"
+#define GLRIFLE_MAG "CUP_30Rnd_556x45_Stanag_L85:10"
+#define GLRIFLE_MAG_FLARE "UGL_FlareYellow_F:4"
+#define GLRIFLE_MAG_SMOKE "1Rnd_Smoke_Grenade_shell:6","1Rnd_SmokeRed_Grenade_shell:4","1Rnd_SmokeGreen_Grenade_shell:4",GLRIFLE_MAG_FLARE
+#define GLRIFLE_MAG_HE "1Rnd_HE_Grenade_shell:4"
+// Carbine
+#define CARBINE "CUP_smg_MP5A5"
+#define CARBINE_MAG "CUP_30Rnd_9x19_MP5:10"
+// AR
+#define AR "CUP_srifle_M14"
+#define AR_MAG "CUP_20Rnd_762x51_DMR:15"
+// AT
+#define AT "CUP_launch_M72A6"
+#define AT_MAG ""
+// MMG
+#define MMG "CUP_srifle_M14"
+#define MMG_MAG "CUP_20Rnd_762x51_DMR:25"
+#define MMG_ATT ""
+// MAT
+#define MAT "CUP_launch_M72A6"
+#define MAT_MAG ""
+#define MAT_MAG2 ""
+#define MAT_OPTIC ""
+// Facewear
+#define GOG 
 
 // -------------------- PASTE ABOVE THIS LINE
 //HMG
@@ -33,8 +69,8 @@
 #define SMG CARBINE
 #define SMG_MAG CARBINE_MAG
 // Pistol
-#define PISTOL "CUP_hgun_Colt1911"
-#define PISTOL_MAG "CUP_7Rnd_45ACP_1911:3"
+#define PISTOL "CUP_hgun_Makarov"
+#define PISTOL_MAG "CUP_8Rnd_9x18_Makarov_M:3"
 // Grenades
 #define LEADER_GRENADES BASE_FRAG,LEADER_SMOKES,SIDE_CHEM_LIGHT
 // Gear
@@ -43,7 +79,7 @@
 #define LINKED BASE_LINKED
 #define LEADER_LINKED BASE_LEADER_LINKED
 #define CARRYALL "B_Carryall_mcamo"
-#define GOG
+#define GOG "SE_M17_Gas_Mask"
 
 // Specialized Resupply Vehicle Loadouts
 // Ammo Truck
@@ -99,11 +135,11 @@ class rifleman {// rifleman
   weapons[] = {RIFLE};
   magazines[] = {RIFLE_MAG,BASE_GRENADES};
   items[] = {TOOLS,RADIO_SR};
-  linkedItems[] = {LINKED};
+  linkedItems[] = {LINKED,"armst_item_pda_clearsky"};
   attachments[] = {RIFLE_ATTACHMENTS};
-  opticChoices[] = {ALT_OPTICS};
-//  goggles[] = {GOG};
-  face[] = {F_USA};
+  opticChoices[] = {};
+  goggles[] = {GOG};
+  face[] = {F_RUS};
 };
 class Fic_Soldier_Carbine: rifleman {// carbine-man
   weapons[] = {CARBINE};
@@ -161,7 +197,6 @@ class ar: rifleman {// AR
   handguns[] = {PISTOL};
 };
 class aar: rifleman {// AAR
-  backpackItems[] += {AR_MAG};
   linkedItems[] += {BINOS};
 };
 class lat: Fic_Soldier_Carbine {// RAT
