@@ -132,15 +132,16 @@ class rifleman {// rifleman
   vest[] = {CAMO_VEST};
   headgear[] = {CAMO_HEADGEAR};
   backpack[] = {CAMO_BACKPACK};
-  backpackItems[] = {BASE_MEDICAL};
+  backpackItems[] = {BASE_MEDICAL,"AnomalyDetector","armst_arthelp"};
   weapons[] = {RIFLE};
   magazines[] = {RIFLE_MAG,BASE_GRENADES};
-  items[] = {TOOLS,RADIO_SR};
-  linkedItems[] = {LINKED,"armst_item_pda_band"};
+  items[] = {TOOLS,RADIO_SR,"ARMST_batteries"};
+  linkedItems[] = {LINKED};
   attachments[] = {RIFLE_ATTACHMENTS};
   opticChoices[] = {};
   goggles[] = {GOG};
   face[] = {F_RUS};
+  handguns[] = {"armst_det_svarog"};
 };
 class Fic_Soldier_Carbine: rifleman {// carbine-man
   weapons[] = {CARBINE};
@@ -180,7 +181,7 @@ class fac: coy {// FAC
 //Medics
 class sm: Fic_Soldier_Carbine {// Medic
   magazines[] = {CARBINE_MAG,MEDIC_GRENADES};
-  backpackItems[] = {MEDIC_MEDICAL};
+  backpackItems[] = {MEDIC_MEDICAL,,"AnomalyDetector","armst_arthelp"};
   items[] += {RADIO_MR,RADIO_LR};
 };
 class plm: sm {// Platoon Medic
